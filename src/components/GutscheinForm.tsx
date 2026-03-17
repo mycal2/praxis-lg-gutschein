@@ -4,7 +4,7 @@ import { useState } from "react";
 import { gutscheinSchema, practitioners, practitionerNames, type GutscheinFormData } from "@/lib/validation";
 import type { Practitioner } from "@/lib/validation";
 
-const practitionerLabels: Record<string, string> = { julia: "Julia", nina: "Nina", tatjana: "Tatjana" };
+const practitionerLabels: Record<string, string> = { julia: "Julia", nina: "Nina", tatjana: "Tatjana", unsicher: "Weiß ich noch nicht" };
 
 type FieldErrors = Partial<Record<keyof GutscheinFormData, string[]>>;
 

@@ -1,12 +1,13 @@
 import { z } from "zod";
 
-export const practitioners = ["julia", "nina", "tatjana"] as const;
+export const practitioners = ["julia", "nina", "tatjana", "unsicher"] as const;
 export type Practitioner = (typeof practitioners)[number];
 
 export const practitionerNames: Record<Practitioner, string> = {
   julia: "Julia Messer-Blohm",
   nina: "Nina Bartoli",
   tatjana: "Tatjana Müller",
+  unsicher: "Weiß ich noch nicht",
 };
 
 export const gutscheinSchema = z.object({

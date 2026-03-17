@@ -18,7 +18,7 @@ export const gutscheinSchema = z.object({
   }).optional().default(""),
   practitioners: z.array(z.enum(practitioners)).min(1, "Bitte wählen Sie mindestens eine/n Therapeut/in"),
   message: z.string().max(500, "Maximal 500 Zeichen").optional().default(""),
-  privacy: z.literal(true, { errorMap: () => ({ message: "Bitte stimmen Sie der Datenschutzerklärung zu" }) }),
+  privacy: z.literal(true, { message: "Bitte stimmen Sie der Datenschutzerklärung zu" }),
   honeypot: z.string().max(0, "Invalid submission"),
 });
 

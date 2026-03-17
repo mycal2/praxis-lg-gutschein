@@ -9,6 +9,7 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://praxis-lg-gutschein-production.up.railway.app"),
   title: "Gutschein — Praxis Lebensgefühl",
   description: "Verschenken Sie 10% Rabatt auf eine Sitzung bei Praxis Lebensgefühl in Kiel.",
   openGraph: {

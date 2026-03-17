@@ -2,7 +2,9 @@ import { Resend } from "resend";
 import GutscheinEmail from "@/emails/gutschein";
 import NotificationEmail from "@/emails/notification";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 type SendVoucherEmailParams = {
   to: string;
@@ -15,7 +17,7 @@ type SendVoucherEmailParams = {
 };
 
 export async function sendVoucherEmail(params: SendVoucherEmailParams) {
-  const { data, error } = await resend.emails.send({
+  const { data, error } = await getResend().emails.send({
     from: "Praxis Lebensgefühl <noreply@praxis-lebensgefuehl.com>",
     to: params.to,
     subject: "Ihr Gutschein — Praxis Lebensgefühl",
@@ -36,7 +38,7 @@ export async function sendNotificationEmail(params: SendVoucherEmailParams & { p
   const notificationEmails = (process.env.NOTIFICATION_EMAILS || "").split(",").filter(Boolean);
   if (notificationEmails.length === 0) return;
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: "Praxis Lebensgefühl <noreply@praxis-lebensgefuehl.com>",
       to: notificationEmails,
       subject: `Neuer Gutschein: ${params.firstName} ${params.lastName}`,

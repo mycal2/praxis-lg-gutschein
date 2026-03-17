@@ -18,7 +18,7 @@ type SendVoucherEmailParams = {
 
 export async function sendVoucherEmail(params: SendVoucherEmailParams) {
   const { data, error } = await getResend().emails.send({
-    from: "Praxis Lebensgefühl <noreply@praxis-lebensgefuehl.com>",
+    from: process.env.EMAIL_FROM || "Praxis Lebensgefühl <noreply@praxis-lebensgefuehl.com>",
     to: params.to,
     subject: "Ihr Gutschein — Praxis Lebensgefühl",
     react: GutscheinEmail({
@@ -39,7 +39,7 @@ export async function sendNotificationEmail(params: SendVoucherEmailParams & { p
   if (notificationEmails.length === 0) return;
   try {
     await getResend().emails.send({
-      from: "Praxis Lebensgefühl <noreply@praxis-lebensgefuehl.com>",
+      from: process.env.EMAIL_FROM || "Praxis Lebensgefühl <noreply@praxis-lebensgefuehl.com>",
       to: notificationEmails,
       subject: `Neuer Gutschein: ${params.firstName} ${params.lastName}`,
       react: NotificationEmail({

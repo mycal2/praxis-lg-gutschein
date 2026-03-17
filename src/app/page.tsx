@@ -16,7 +16,7 @@ export default function Home() {
       {/* Intro */}
       <section className="px-6 py-8 text-center max-w-xl mx-auto">
         <p className="text-gray-700 leading-relaxed">
-          Verschenken Sie <strong>10% Rabatt</strong> auf eine Sitzung bei einer unserer Therapeutinnen. Füllen Sie das Formular aus und Sie erhalten Ihren persönlichen Gutschein direkt per E-Mail.
+          Lösen Sie jetzt Ihren <strong>10 % Gutschein</strong> für Ihre erste Sitzung ein. Füllen Sie das Formular aus und erhalten Sie Ihren persönlichen Gutschein direkt per E-Mail.
         </p>
       </section>
       {/* Form */}

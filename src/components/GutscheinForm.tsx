@@ -177,18 +177,31 @@ export function GutscheinForm() {
 
       {/* Practitioners */}
       <div>
-        <label htmlFor="practitioner" className="block text-sm font-medium text-dark mb-1">Therapeut/in *</label>
-        <select
-          id="practitioner"
-          value={formValues.practitioners[0] || ""}
-          onChange={(e) => updateField("practitioners", e.target.value ? [e.target.value] : [])}
-          className={`w-full rounded-lg border px-3 py-2.5 text-sm outline-none transition-colors focus:ring-2 focus:ring-teal/15 focus:border-teal ${fieldErrors.practitioners ? "border-error" : "border-gray-300"}`}
-        >
-          <option value="">Bitte wählen...</option>
-          {practitioners.map((p) => (
-            <option key={p} value={p}>{practitionerLabels[p]}</option>
-          ))}
-        </select>
+        <label className="block text-sm font-medium text-dark mb-2">Therapeut/in *</label>
+        <div className="flex flex-wrap gap-2">
+          {practitioners.map((p) => {
+            const selected = formValues.practitioners.includes(p);
+            return (
+              <button
+                key={p}
+                type="button"
+                onClick={() => updateField("practitioners", [p])}
+                className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm transition-colors ${
+                  selected
+                    ? "border-teal bg-teal/10 text-teal-dark"
+                    : "border-gray-300 text-gray-700 hover:border-gray-500"
+                }`}
+              >
+                {selected && (
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                )}
+                {practitionerLabels[p]}
+              </button>
+            );
+          })}
+        </div>
         {fieldErrors.practitioners && <p className="mt-1 text-xs text-error">{fieldErrors.practitioners[0]}</p>}
       </div>
 

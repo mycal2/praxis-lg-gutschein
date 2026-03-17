@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teal: #74B4AF;
+  --color-teal-light: #A3CFC9;
+  --color-teal-dark: #5A9A94;
+  --color-dark: #2C2C2C;
+  --color-gray-700: #4A4A4A;
+  --color-gray-500: #7A7A7A;
+  --color-gray-300: #B8B8B8;
+  --color-gray-100: #F0F0F0;
+  --color-warm-sand: #F5F0EB;
+  --color-warm-beige: #E8DDD3;
+  --color-error: #C25B56;
+  --color-warning: #D4A853;
+  --font-sans: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}

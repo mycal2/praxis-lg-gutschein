@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>CI Styleguide — Praxis Lebensgefühl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       CSS Custom Properties (Design Tokens)
+       ======================================== */
+    :root {
+      /* Primary */
+      --teal: #74B4AF;
+      --teal-light: #A3CFC9;
+      --teal-dark: #5A9A94;
+
+      /* Neutrals */
+      --black: #000000;
+      --dark: #2C2C2C;
+      --gray-700: #4A4A4A;
+      --gray-500: #7A7A7A;
+      --gray-300: #B8B8B8;
+      --gray-100: #F0F0F0;
+      --white: #FFFFFF;
+
+      /* Warm accents (complementary to teal) */
+      --warm-sand: #F5F0EB;
+      --warm-beige: #E8DDD3;
+
+      /* Functional */
+      --success: #74B4AF;
+      --error: #C25B56;
+      --warning: #D4A853;
+
+      /* Typography */
+      --font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      /* Spacing (8px base) */
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+      --space-3xl: 64px;
+      --space-4xl: 80px;
+
+      /* Border radius */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    /* ========================================
+       Base Styles
+       ======================================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-family);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--white);
+    }
+
+    /* ========================================
+       Layout
+       ======================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--space-xl);
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav img {
+      height: 36px;
+    }
+
+    .nav-title {
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-left: var(--space-lg);
+      opacity: 0.7;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: var(--space-lg);
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    main {
+      margin-top: 64px;
+    }
+
+    .section {
+      padding: var(--space-4xl) var(--space-xl);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section--dark {
+      background: var(--dark);
+      color: var(--white);
+      max-width: none;
+    }
+
+    .section--dark .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section--sand {
+      background: var(--warm-sand);
+      max-width: none;
+    }
+
+    .section--sand .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section--teal {
+      background: var(--teal);
+      color: var(--white);
+      max-width: none;
+    }
+
+    .section--teal .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       Hero
+       ======================================== */
+    .hero {
+      text-align: center;
+      padding: var(--space-4xl) var(--space-xl);
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .hero-knoten {
+      width: 120px;
+      margin-bottom: var(--space-xl);
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--teal-light);
+      letter-spacing: 0.04em;
+    }
+
+    /* ========================================
+       Typography
+       ======================================== */
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      margin-bottom: var(--space-lg);
+      color: var(--dark);
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: var(--space-md);
+      color: var(--dark);
+    }
+
+    .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal-dark);
+      margin-bottom: var(--space-sm);
+    }
+
+    p + p { margin-top: var(--space-md); }
+
+    /* ========================================
+       Color Swatches
+       ======================================== */
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+
+    .swatch {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-100);
+    }
+
+    .swatch-color {
+      height: 80px;
+    }
+
+    .swatch-info {
+      padding: var(--space-sm) var(--space-md);
+      font-size: 0.8rem;
+    }
+
+    .swatch-name {
+      font-weight: 600;
+      display: block;
+    }
+
+    .swatch-hex {
+      color: var(--gray-500);
+      font-family: monospace;
+      font-size: 0.75rem;
+    }
+
+    /* ========================================
+       Logo Showcase
+       ======================================== */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-xl);
+      margin-top: var(--space-lg);
+    }
+
+    .logo-card {
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      position: relative;
+    }
+
+    .logo-card img {
+      max-width: 280px;
+      max-height: 80px;
+    }
+
+    .logo-card--dark {
+      background: var(--dark);
+    }
+
+    .logo-card--light {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+    }
+
+    .logo-card--teal {
+      background: var(--teal);
+    }
+
+    .logo-card .logo-label {
+      position: absolute;
+      bottom: var(--space-md);
+      left: var(--space-md);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.5;
+    }
+
+    .logo-card--dark .logo-label { color: var(--white); }
+    .logo-card--light .logo-label { color: var(--dark); }
+    .logo-card--teal .logo-label { color: var(--white); }
+
+    .knoten-showcase {
+      display: flex;
+      gap: var(--space-2xl);
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: var(--space-xl);
+    }
+
+    .knoten-showcase img {
+      width: 100px;
+    }
+
+    /* ========================================
+       Typography Showcase
+       ======================================== */
+    .type-specimen {
+      margin-top: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-xl);
+      border-bottom: 1px solid var(--gray-100);
+      padding-bottom: var(--space-lg);
+    }
+
+    .type-meta {
+      flex: 0 0 200px;
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      font-family: monospace;
+    }
+
+    .type-sample {
+      flex: 1;
+    }
+
+    /* ========================================
+       Spacing Scale
+       ======================================== */
+    .spacing-scale {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+
+    .spacing-label {
+      flex: 0 0 100px;
+      font-size: 0.8rem;
+      font-family: monospace;
+      color: var(--gray-500);
+    }
+
+    .spacing-bar {
+      height: 24px;
+      background: var(--teal-light);
+      border-radius: var(--radius-sm);
+      transition: width 0.3s;
+    }
+
+    .spacing-value {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      font-family: monospace;
+      flex: 0 0 50px;
+    }
+
+    /* ========================================
+       Buttons
+       ======================================== */
+    .btn-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      font-family: var(--font-family);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 2px solid transparent;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn--primary {
+      background: var(--teal);
+      color: var(--white);
+    }
+    .btn--primary:hover {
+      background: var(--teal-dark);
+    }
+
+    .btn--secondary {
+      background: transparent;
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+    .btn--secondary:hover {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .btn--dark {
+      background: var(--dark);
+      color: var(--white);
+    }
+    .btn--dark:hover {
+      background: var(--black);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--dark);
+      border-color: var(--gray-300);
+    }
+    .btn--ghost:hover {
+      border-color: var(--dark);
+    }
+
+    /* ========================================
+       Cards
+       ======================================== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .card-accent {
+      height: 4px;
+      background: var(--teal);
+    }
+
+    .card-body {
+      padding: var(--space-lg);
+    }
+
+    .card-body h3 {
+      font-size: 1.1rem;
+    }
+
+    .card-body p {
+      font-size: 0.9rem;
+      color: var(--gray-500);
+      margin-top: var(--space-sm);
+    }
+
+    /* ========================================
+       Form Elements
+       ======================================== */
+    .form-showcase {
+      max-width: 480px;
+      margin-top: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: var(--space-xs);
+      color: var(--dark);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      font-family: var(--font-family);
+      font-size: 0.9rem;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-md);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: var(--white);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(116, 180, 175, 0.15);
+    }
+
+    .form-input::placeholder {
+      color: var(--gray-300);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* ========================================
+       Tone of Voice
+       ======================================== */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+
+    .voice-do, .voice-dont {
+      padding: var(--space-lg);
+      border-radius: var(--radius-md);
+    }
+
+    .voice-do {
+      background: rgba(116, 180, 175, 0.08);
+      border-left: 3px solid var(--teal);
+    }
+
+    .voice-dont {
+      background: rgba(194, 91, 86, 0.06);
+      border-left: 3px solid var(--error);
+    }
+
+    .voice-do h3 { color: var(--teal-dark); }
+    .voice-dont h3 { color: var(--error); }
+
+    .voice-do ul, .voice-dont ul {
+      list-style: none;
+      margin-top: var(--space-sm);
+    }
+
+    .voice-do li, .voice-dont li {
+      padding: var(--space-xs) 0;
+      font-size: 0.9rem;
+    }
+
+    .voice-do li::before { content: "✓ "; color: var(--teal); font-weight: 700; }
+    .voice-dont li::before { content: "✗ "; color: var(--error); font-weight: 700; }
+
+    /* ========================================
+       Contact Info
+       ======================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+
+    .contact-card {
+      padding: var(--space-lg);
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-md);
+    }
+
+    .contact-card h3 {
+      color: var(--teal-light);
+      font-size: 1rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .contact-card p {
+      font-size: 0.85rem;
+      line-height: 1.8;
+      opacity: 0.85;
+    }
+
+    /* ========================================
+       Responsive
+       ======================================== */
+    @media (max-width: 768px) {
+      .section { padding: var(--space-2xl) var(--space-md); }
+      .type-row { flex-direction: column; gap: var(--space-sm); }
+      .type-meta { flex: none; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .logo-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <img src="./logo-mit-text.svg" alt="Praxis Lebensgefühl">
+    <span class="nav-title">CI Styleguide</span>
+    <div class="nav-links">
+      <a href="#logo">Logo</a>
+      <a href="#farben">Farben</a>
+      <a href="#typografie">Typografie</a>
+      <a href="#komponenten">Komponenten</a>
+      <a href="#stimme">Stimme</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <div class="hero">
+      <img src="./knoten.svg" alt="Lebensgefühl Knoten" class="hero-knoten">
+      <h1>Praxis Lebensgefühl</h1>
+      <p class="subtitle">Corporate Identity &amp; Styleguide</p>
+    </div>
+
+    <!-- ==================== LOGO ==================== -->
+    <section class="section" id="logo">
+      <p class="label">Markenzeichen</p>
+      <h2>Logo</h2>
+      <p>Das Logo besteht aus dem organischen Knotensymbol (Verbindung, Ganzheitlichkeit) und dem Schriftzug „Praxis Lebensgefühl" in geometrischer Versalschrift. Es existiert in drei Varianten für verschiedene Hintergründe.</p>
+
+      <div class="logo-grid">
+        <div class="logo-card logo-card--dark">
+          <img src="./logo-mit-text.svg" alt="Logo auf dunklem Hintergrund">
+          <span class="logo-label">Auf Dunkel (Weiß)</span>
+        </div>
+        <div class="logo-card logo-card--light">
+          <img src="./logo-mit-text-dark.svg" alt="Logo auf hellem Hintergrund">
+          <span class="logo-label">Auf Hell (Dunkel)</span>
+        </div>
+        <div class="logo-card logo-card--teal">
+          <img src="./logo-mit-text.svg" alt="Logo auf Teal-Hintergrund">
+          <span class="logo-label">Auf Markenfarbe (Weiß)</span>
+        </div>
+      </div>
+
+      <h3 style="margin-top: var(--space-2xl);">Knoten-Symbol (Bildmarke)</h3>
+      <p>Das Knotensymbol kann alleinstehend als Icon, Wasserzeichen oder dekoratives Element verwendet werden.</p>
+
+      <div class="knoten-showcase">
+        <div style="background: var(--white); padding: var(--space-xl); border-radius: var(--radius-lg); border: 1px solid var(--gray-100);">
+          <img src="./knoten.svg" alt="Knoten Teal">
+        </div>
+        <div style="background: var(--dark); padding: var(--space-xl); border-radius: var(--radius-lg);">
+          <img src="./knoten.svg" alt="Knoten auf Dunkel">
+        </div>
+        <div style="background: var(--warm-sand); padding: var(--space-xl); border-radius: var(--radius-lg);">
+          <img src="./knoten.svg" alt="Knoten auf Sand">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FARBEN ==================== -->
+    <section class="section--sand" id="farben">
+      <div class="section-inner">
+        <p class="label">Farbpalette</p>
+        <h2>Farben</h2>
+        <p>Die Farbwelt ist ruhig, natürlich und geerdet. Teal als Markenfarbe steht für Balance und Vertrauen. Warme Sandtöne ergänzen die Palette und schaffen eine einladende Atmosphäre.</p>
+
+        <h3 style="margin-top: var(--space-xl);">Primärfarbe</h3>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--teal);"></div>
+            <div class="swatch-info"><span class="swatch-name">Teal</span><span class="swatch-hex">#74B4AF</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--teal-light);"></div>
+            <div class="swatch-info"><span class="swatch-name">Teal Light</span><span class="swatch-hex">#A3CFC9</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--teal-dark);"></div>
+            <div class="swatch-info"><span class="swatch-name">Teal Dark</span><span class="swatch-hex">#5A9A94</span></div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: var(--space-xl);">Neutrale Töne</h3>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--black);"></div>
+            <div class="swatch-info"><span class="swatch-name">Schwarz</span><span class="swatch-hex">#000000</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--dark);"></div>
+            <div class="swatch-info"><span class="swatch-name">Dunkel</span><span class="swatch-hex">#2C2C2C</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--gray-700);"></div>
+            <div class="swatch-info"><span class="swatch-name">Grau 700</span><span class="swatch-hex">#4A4A4A</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--gray-500);"></div>
+            <div class="swatch-info"><span class="swatch-name">Grau 500</span><span class="swatch-hex">#7A7A7A</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--gray-300);"></div>
+            <div class="swatch-info"><span class="swatch-name">Grau 300</span><span class="swatch-hex">#B8B8B8</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--gray-100);"></div>
+            <div class="swatch-info"><span class="swatch-name">Grau 100</span><span class="swatch-hex">#F0F0F0</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--white); border: 1px solid var(--gray-100);"></div>
+            <div class="swatch-info"><span class="swatch-name">Weiß</span><span class="swatch-hex">#FFFFFF</span></div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: var(--space-xl);">Warme Akzente</h3>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--warm-sand);"></div>
+            <div class="swatch-info"><span class="swatch-name">Sand</span><span class="swatch-hex">#F5F0EB</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--warm-beige);"></div>
+            <div class="swatch-info"><span class="swatch-name">Beige</span><span class="swatch-hex">#E8DDD3</span></div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: var(--space-xl);">Funktionale Farben</h3>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--success);"></div>
+            <div class="swatch-info"><span class="swatch-name">Erfolg</span><span class="swatch-hex">#74B4AF</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--error);"></div>
+            <div class="swatch-info"><span class="swatch-name">Fehler</span><span class="swatch-hex">#C25B56</span></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--warning);"></div>
+            <div class="swatch-info"><span class="swatch-name">Warnung</span><span class="swatch-hex">#D4A853</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TYPOGRAFIE ==================== -->
+    <section class="section" id="typografie">
+      <p class="label">Schrift</p>
+      <h2>Typografie</h2>
+      <p>Primärschrift ist <strong>Nunito Sans</strong> — eine geometrische, humanistische Sans-Serif die zum Stil des Logos passt. Sie ist warm und lesbar, aber klar und professionell.</p>
+
+      <div class="type-specimen">
+        <div class="type-row">
+          <div class="type-meta">
+            H1 — 300 weight<br>
+            clamp(2rem, 4vw, 3rem)<br>
+            Letter-spacing: 0.08em<br>
+            Uppercase
+          </div>
+          <div class="type-sample">
+            <h1 style="margin: 0; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase;">Lebensgefühl</h1>
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">
+            H2 — 300 weight<br>
+            clamp(1.5rem, 3vw, 2.2rem)<br>
+            Letter-spacing: 0.04em
+          </div>
+          <div class="type-sample">
+            <h2 style="margin: 0;">Ganzheitlich auf dem Weg</h2>
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">
+            H3 — 600 weight<br>
+            1.2rem
+          </div>
+          <div class="type-sample">
+            <h3 style="margin: 0;">Psychologische Beratung</h3>
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">
+            Body — 400 weight<br>
+            1rem / 1.6 line-height
+          </div>
+          <div class="type-sample">
+            <p style="margin: 0;">Wir begleiten Sie ganzheitlich auf dem Weg zu einem neuen Lebensgefühl. Empathisch, klar, mit ganzem Herzen.</p>
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">
+            Small / Label — 700 weight<br>
+            0.75rem<br>
+            Uppercase, 0.12em tracking
+          </div>
+          <div class="type-sample">
+            <span class="label" style="margin: 0;">Unser Angebot</span>
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">
+            Font weights<br>
+            available
+          </div>
+          <div class="type-sample">
+            <p style="margin: 0;">
+              <span style="font-weight: 300;">Light 300 — Überschriften, Hero-Text</span><br>
+              <span style="font-weight: 400;">Regular 400 — Fließtext, Beschreibungen</span><br>
+              <span style="font-weight: 500;">Medium 500 — Hervorhebungen</span><br>
+              <span style="font-weight: 600;">Semibold 600 — Labels, Buttons, H3</span><br>
+              <span style="font-weight: 700;">Bold 700 — Uppercase Labels, Akzente</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SPACING ==================== -->
+    <section class="section--sand">
+      <div class="section-inner" id="spacing">
+        <p class="label">Abstand</p>
+        <h2>Spacing Scale</h2>
+        <p>Basierend auf einer 8px-Einheit. Konsistente Abstände schaffen visuelle Ruhe.</p>
+
+        <div class="spacing-scale">
+          <div class="spacing-row">
+            <span class="spacing-label">--space-xs</span>
+            <div class="spacing-bar" style="width: 4px;"></div>
+            <span class="spacing-value">4px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--space-sm</span>
+            <div class="spacing-bar" style="width: 8px;"></div>
+            <span class="spacing-value">8px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--space-md</span>
+            <div class="spacing-bar" style="width: 16px;"></div>
+            <span class="spacing-value">16px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--space-lg</span>
+            <div class="spacing-bar" style="width: 24px;"></div>
+            <span class="spacing-value">24px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--space-xl</span>
+            <div class="spacing-bar" style="width: 32px;"></div>
+            <span class="spacing-value">32px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--space-2xl</span>
+            <div class="spacing-bar" style="width: 48px;"></div>
+            <span class="spacing-value">48px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--space-3xl</span>
+            <div class="spacing-bar" style="width: 64px;"></div>
+            <span class="spacing-value">64px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--space-4xl</span>
+            <div class="spacing-bar" style="width: 80px;"></div>
+            <span class="spacing-value">80px</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== KOMPONENTEN ==================== -->
+    <section class="section" id="komponenten">
+      <p class="label">UI-Elemente</p>
+      <h2>Komponenten</h2>
+
+      <h3>Buttons</h3>
+      <div class="btn-showcase">
+        <button class="btn btn--primary">Gutschein bestellen</button>
+        <button class="btn btn--secondary">Mehr erfahren</button>
+        <button class="btn btn--dark">Kontakt</button>
+        <button class="btn btn--ghost">Abbrechen</button>
+      </div>
+
+      <h3 style="margin-top: var(--space-2xl);">Karten</h3>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-accent"></div>
+          <div class="card-body">
+            <h3>Psychologische Beratung</h3>
+            <p>Empathische Begleitung bei Lebenskrisen, Ängsten und persönlichen Herausforderungen.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-accent"></div>
+          <div class="card-body">
+            <h3>Breathwork</h3>
+            <p>Atemarbeit als Weg zu emotionaler Befreiung und körperlichem Wohlbefinden.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-accent"></div>
+          <div class="card-body">
+            <h3>Systemisches Coaching</h3>
+            <p>Neue Perspektiven für berufliche und private Veränderungsprozesse.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: var(--space-2xl);">Formularelemente</h3>
+      <div class="form-showcase">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-input" placeholder="Ihr vollständiger Name">
+        </div>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input type="email" class="form-input" placeholder="ihre@email.de">
+        </div>
+        <div class="form-group">
+          <label>Nachricht</label>
+          <textarea class="form-input" placeholder="Ihre Nachricht an uns..."></textarea>
+        </div>
+        <button class="btn btn--primary">Absenden</button>
+      </div>
+    </section>
+
+    <!-- ==================== TONE OF VOICE ==================== -->
+    <section class="section--teal" id="stimme">
+      <div class="section-inner">
+        <p class="label" style="color: rgba(255,255,255,0.6);">Kommunikation</p>
+        <h2 style="color: var(--white);">Tone of Voice</h2>
+        <p style="opacity: 0.9;">Die Markensprache ist wie ein Gespräch mit einer warmen, weisen Freundin — beruhigend ohne herablassend zu sein, fundiert ohne einzuschüchtern, und zutiefst menschlich.</p>
+
+        <div class="voice-grid" style="margin-top: var(--space-xl);">
+          <div class="voice-do" style="background: rgba(255,255,255,0.15); border-left-color: var(--white);">
+            <h3 style="color: var(--white);">So klingt Lebensgefühl</h3>
+            <ul style="color: rgba(255,255,255,0.9);">
+              <li>Warm und persönlich — „Ich begleite dich"</li>
+              <li>Empathisch und einladend</li>
+              <li>Alltagssprache statt Fachjargon</li>
+              <li>Empowernd — „Nichts weniger als Freiheit"</li>
+              <li>Norddeutsche Gelassenheit — „Lass mal schnacken"</li>
+              <li>Ganzheitlich — Körper, Geist, Seele</li>
+            </ul>
+          </div>
+          <div class="voice-dont" style="background: rgba(255,255,255,0.08); border-left-color: rgba(255,255,255,0.4);">
+            <h3 style="color: rgba(255,255,255,0.8);">So klingt es nicht</h3>
+            <ul style="color: rgba(255,255,255,0.7);">
+              <li>Klinisch oder medizinisch-distanziert</li>
+              <li>Belehrend oder besserwisserisch</li>
+              <li>Übermäßig werblich oder verkäuferisch</li>
+              <li>Formell oder bürokratisch</li>
+              <li>Kompliziert oder akademisch</li>
+              <li>Kitschig oder esoterisch-übertrieben</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="color: var(--white); margin-top: var(--space-2xl);">Kernwerte</h3>
+        <p style="opacity: 0.9; font-size: 1.1rem; font-weight: 300; margin-top: var(--space-md);">
+          <em>Empathisch — Klar — Mit ganzem Herzen — Ganzheitlich — Freiheit</em>
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== KONTAKT ==================== -->
+    <section class="section--dark" id="kontakt">
+      <div class="section-inner">
+        <p class="label" style="color: var(--teal-light);">Praxis</p>
+        <h2 style="color: var(--white);">Kontaktdaten</h2>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Praxis</h3>
+            <p>
+              Holtenauer Straße 82<br>
+              24105 Kiel<br><br>
+              info@praxis-lebensgefuehl.com<br>
+              0431 - 301 499 42
+            </p>
+          </div>
+          <div class="contact-card">
+            <h3>Julia Messer-Blohm</h3>
+            <p>
+              Psychologische Beratung<br>
+              Breathwork · Coaching<br><br>
+              jm@praxis-lebensgefuehl.com<br>
+              0431 - 301 499 42
+            </p>
+          </div>
+          <div class="contact-card">
+            <h3>Nina Bartoli</h3>
+            <p>
+              Psychologische Beratung<br>
+              EMDR · Entspannung<br><br>
+              nb@praxis-lebensgefuehl.com<br>
+              01516 - 277 24 85
+            </p>
+          </div>
+          <div class="contact-card">
+            <h3>Tatjana Müller</h3>
+            <p>
+              Heilpraktikerin<br>
+              NESC Coaching<br><br>
+              tm@praxis-lebensgefuehl.com<br>
+              0431 - 301 499 31
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-2xl); text-align: center; opacity: 0.4; font-size: 0.8rem;">
+          <p>praxis-lebensgefuehl.com &middot; Instagram: @praxis.lebensgefuehl &middot; Facebook: praxis.lebensgefuehl.kiel</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

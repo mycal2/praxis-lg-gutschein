@@ -61,7 +61,7 @@ export function GutscheinForm() {
         if (data.fields) {
           setFieldErrors(data.fields);
         }
-        setServerError(data.error || "Ein Fehler ist aufgetreten.");
+        setServerError(data.debug ? `${data.error} (${data.debug})` : data.error || "Ein Fehler ist aufgetreten.");
         return;
       }
       setSuccess(true);

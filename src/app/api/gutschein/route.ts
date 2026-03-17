@@ -48,8 +48,9 @@ export async function POST(request: NextRequest) {
       message: data.message || undefined,
     });
   } catch (error) {
-    console.error("Voucher email failed:", error);
-    return NextResponse.json({ error: "E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es erneut." }, { status: 500 });
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("Voucher email failed:", message);
+    return NextResponse.json({ error: "E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es erneut.", debug: message }, { status: 500 });
   }
 
   // Fire-and-forget: notification + Telegram

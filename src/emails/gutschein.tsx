@@ -28,7 +28,7 @@ export default function GutscheinEmail({
         <Container style={{ maxWidth: 560, margin: "0 auto", backgroundColor: "#FFFFFF" }}>
           {/* Header */}
           <Section style={{ backgroundColor: "#2C2C2C", padding: "28px 32px", textAlign: "center" as const }}>
-            <Img src={`${baseUrl}/knoten.svg`} width="48" height="48" alt="Praxis Lebensgefühl" style={{ margin: "0 auto 8px" }} />
+            <Img src={`${baseUrl}/knoten.png`} width="48" height="48" alt="Praxis Lebensgefühl" style={{ margin: "0 auto 8px" }} />
             <Text style={{ fontSize: 10, fontWeight: 300, color: "rgba(255,255,255,0.5)", letterSpacing: "0.12em", textTransform: "uppercase" as const, margin: 0 }}>Praxis Lebensgefühl</Text>
           </Section>
 

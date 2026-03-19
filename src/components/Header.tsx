@@ -2,8 +2,10 @@ import Image from "next/image";
 
 export function Header() {
   return (
-    <header className="bg-teal px-6 py-4 flex items-center">
-      <Image src="/knoten.svg" alt="" width={28} height={28} className="mr-3" />
+    <header className="bg-dark px-6 py-4 flex items-center">
+      <div className="bg-teal-dark rounded-lg p-1.5 mr-3">
+        <Image src="/knoten-white.svg" alt="" width={22} height={22} />
+      </div>
       <span className="text-white text-xs font-light tracking-widest uppercase">
         Praxis Lebensgefühl
       </span>

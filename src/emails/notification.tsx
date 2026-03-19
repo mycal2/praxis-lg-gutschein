@@ -36,7 +36,7 @@ export default function NotificationEmail({
           <Text style={labelStyle}>E-Mail</Text>
           <Text style={valueStyle}>{email}</Text>
           {phone && (<><Text style={labelStyle}>Telefon</Text><Text style={valueStyle}>{phone}</Text></>)}
-          <Text style={labelStyle}>Therapeut/in</Text>
+          <Text style={labelStyle}>Beraterin</Text>
           <Text style={valueStyle}>{practitioners.join(", ")}</Text>
           {message && (<><Text style={labelStyle}>Persönliche Nachricht</Text><Text style={valueStyle}>„{message}"</Text></>)}
           <Text style={labelStyle}>Gültig bis</Text>

@@ -3,7 +3,7 @@ type TelegramMessageData = { name: string; email: string; phone: string; practit
 export function formatTelegramMessage(data: TelegramMessageData): string {
   const lines = ["🎫 Neuer Gutschein angefordert!", "", `Name: ${data.name}`, `E-Mail: ${data.email}`];
   if (data.phone) lines.push(`Tel: ${data.phone}`);
-  lines.push(`Therapeut/in: ${data.practitioners.join(", ")}`);
+  lines.push(`Beraterin: ${data.practitioners.join(", ")}`);
   lines.push(`Code: ${data.code}`);
   lines.push(`Gültig bis: ${data.expiry}`);
   return lines.join("\n");

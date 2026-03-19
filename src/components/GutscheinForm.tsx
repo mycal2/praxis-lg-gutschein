@@ -4,7 +4,7 @@ import { useState } from "react";
 import { gutscheinSchema, practitioners, practitionerNames, type GutscheinFormData } from "@/lib/validation";
 import type { Practitioner } from "@/lib/validation";
 
-const practitionerLabels: Record<string, string> = { julia: "Julia", nina: "Nina", tatjana: "Tatjana", unsicher: "Weiß ich noch nicht" };
+const practitionerLabels: Record<string, string> = { julia: "Julia", judith: "Judith", tatjana: "Tatjana", unsicher: "Weiß ich noch nicht" };
 
 type FieldErrors = Partial<Record<keyof GutscheinFormData, string[]>>;
 
@@ -177,7 +177,7 @@ export function GutscheinForm() {
 
       {/* Practitioners */}
       <div>
-        <label className="block text-sm font-medium text-dark mb-2">Therapeut/in *</label>
+        <label className="block text-sm font-medium text-dark mb-2">Beraterin *</label>
         <div className="flex flex-wrap gap-2">
           {practitioners.map((p) => {
             const selected = formValues.practitioners.includes(p);

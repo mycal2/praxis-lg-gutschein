@@ -43,7 +43,7 @@ export default function GutscheinEmail({
             {/* Details */}
             <Section style={{ textAlign: "left" as const }}>
               <Row><Column style={{ width: 120, padding: "6px 0", color: "#7A7A7A", fontSize: 13 }}>Name</Column><Column style={{ padding: "6px 0", color: "#2C2C2C", fontSize: 13, fontWeight: 500 }}>{firstName} {lastName}</Column></Row>
-              <Row><Column style={{ width: 120, padding: "6px 0", color: "#7A7A7A", fontSize: 13, borderTop: "1px solid #F0F0F0" }}>Therapeut/in</Column><Column style={{ padding: "6px 0", color: "#2C2C2C", fontSize: 13, fontWeight: 500, borderTop: "1px solid #F0F0F0" }}>{practitioners.join(", ")}</Column></Row>
+              <Row><Column style={{ width: 120, padding: "6px 0", color: "#7A7A7A", fontSize: 13, borderTop: "1px solid #F0F0F0" }}>Beraterin</Column><Column style={{ padding: "6px 0", color: "#2C2C2C", fontSize: 13, fontWeight: 500, borderTop: "1px solid #F0F0F0" }}>{practitioners.join(", ")}</Column></Row>
               <Row><Column style={{ width: 120, padding: "6px 0", color: "#7A7A7A", fontSize: 13, borderTop: "1px solid #F0F0F0" }}>Gültig bis</Column><Column style={{ padding: "6px 0", color: "#2C2C2C", fontSize: 13, fontWeight: 500, borderTop: "1px solid #F0F0F0" }}>{expiryDate}</Column></Row>
             </Section>
 

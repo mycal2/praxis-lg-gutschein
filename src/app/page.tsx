@@ -20,7 +20,7 @@ export default function Home() {
         </p>
       </section>
       {/* Form */}
-      <section className="px-6 pb-12 max-w-lg mx-auto w-full flex-1">
+      <section className="px-6 pb-12 max-w-xl mx-auto w-full flex-1">
         <GutscheinForm />
       </section>
       <Footer />
